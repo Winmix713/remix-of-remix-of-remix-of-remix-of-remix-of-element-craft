@@ -116,12 +116,39 @@ export default {
         },
         "glow-pulse": {
           "0%, 100%": {
-            opacity: "0.6",
+            opacity: "1",
             transform: "scale(1)",
           },
           "50%": {
+            opacity: "0.6",
+            transform: "scale(0.95)",
+          },
+        },
+        "glow-breathe": {
+          "0%, 100%": {
             opacity: "0.8",
-            transform: "scale(1.02)",
+            filter: "blur(180px)",
+          },
+          "50%": {
+            opacity: "1",
+            filter: "blur(150px)",
+          },
+        },
+        "glow-wave": {
+          "0%": {
+            transform: "translateX(0) translateY(0)",
+          },
+          "25%": {
+            transform: "translateX(20px) translateY(-10px)",
+          },
+          "50%": {
+            transform: "translateX(0) translateY(-20px)",
+          },
+          "75%": {
+            transform: "translateX(-20px) translateY(-10px)",
+          },
+          "100%": {
+            transform: "translateX(0) translateY(0)",
           },
         },
         "fade-in": {
@@ -134,6 +161,16 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "fade-out": {
+          from: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+          to: {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+        },
         "scale-in": {
           from: {
             transform: "scale(0.95)",
@@ -142,6 +179,16 @@ export default {
           to: {
             transform: "scale(1)",
             opacity: "1",
+          },
+        },
+        "scale-out": {
+          from: {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+          to: {
+            transform: "scale(0.95)",
+            opacity: "0",
           },
         },
         "shimmer": {
@@ -168,16 +215,37 @@ export default {
             backgroundPosition: "100% 50%",
           },
         },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "slide-out-right": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "glow-pulse": "glow-pulse var(--glow-speed, 2s) ease-in-out infinite",
+        "glow-breathe": "glow-breathe var(--glow-speed, 3s) ease-in-out infinite",
+        "glow-wave": "glow-wave var(--glow-speed, 4s) ease-in-out infinite",
         "fade-in": "fade-in 0.3s ease-out",
+        "fade-out": "fade-out 0.3s ease-out",
         "scale-in": "scale-in 0.2s ease-out",
+        "scale-out": "scale-out 0.2s ease-out",
         "shimmer": "shimmer 2s linear infinite",
         "float": "float 3s ease-in-out infinite",
         "gradient-shift": "gradient-shift 3s ease infinite",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-out-right": "slide-out-right 0.3s ease-out",
+        "spin-slow": "spin-slow 8s linear infinite",
+        "enter": "fade-in 0.3s ease-out, scale-in 0.2s ease-out",
+        "exit": "fade-out 0.3s ease-out, scale-out 0.2s ease-out",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
